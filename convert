@@ -23,7 +23,7 @@ done
 
 echo "> generating zip files"
 mkdir -p zipped
-cd google-fonts
+cd converted
 for dir in *; do
   echo "  - zipping $dir into $dir\_AlrightFont.zip"
   zip -r ../zipped/$dir\_AlrightFont.zip $dir
