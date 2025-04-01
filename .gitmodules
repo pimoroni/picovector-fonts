@@ -1,0 +1,4 @@
+[submodule "alright-fonts"]
+	path = alright-fonts
+	url = https://github.com/gadgetoid/alright-fonts
+	branch = feature/16bit-afinate
