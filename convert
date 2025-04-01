@@ -20,3 +20,12 @@ for path in $(find google-fonts/* -maxdepth 0 -type d); do
     fi
   done
 done
+
+echo "> generating zip files"
+mkdir -p zipped
+cd google-fonts
+for dir in *; do
+  echo "  - zipping $dir into $dir\_AlrightFont.zip"
+  zip -r ../zipped/$dir\_AlrightFont.zip $dir
+done;
+cd ..
