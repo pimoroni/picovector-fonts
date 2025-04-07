@@ -1,9 +1,10 @@
 #!/usr/bin/env bash
 
-for path in $(find google-fonts/* -maxdepth 0 -type d); do
+function convert {
+  path=$1
   basepath="converted/$(basename -- $path)"
   mkdir -p $basepath
-  echo "> processing directory $basepath"
+  echo "> processing directory $path"
 
   for file in $(find $path/* -maxdepth 0); do
     basename="$(basename -- $file)"
@@ -19,13 +20,24 @@ for path in $(find google-fonts/* -maxdepth 0 -type d); do
       cp $file $basepath/$filename
     fi
   done
-done
+}
 
-echo "> generating zip files"
-mkdir -p zipped
-cd converted
-for dir in *; do
+if [ $# -eq 1 ]; then
+  dir=$1
+  convert google-fonts/$dir
   echo "  - zipping $dir into $dir\_AlrightFont.zip"
-  zip -r ../zipped/$dir\_AlrightFont.zip $dir
-done;
-cd ..
+  zip -r zipped/$dir\_AlrightFont.zip converted/$dir
+else
+  for path in $(find google-fonts/* -maxdepth 0 -type d); do
+    convert $path
+  done
+
+  echo "> generating zip files"
+  mkdir -p zipped
+  cd converted
+  for dir in *; do
+    echo "  - zipping $dir into $dir\_AlrightFont.zip"
+    zip -r ../zipped/$dir\_AlrightFont.zip $dir
+  done;
+  cd ..
+fi
