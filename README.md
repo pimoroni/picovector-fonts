@@ -15,8 +15,8 @@ To use this repository:
 
 1. Clone this repository: `git clone https://github.com/pimoroni/picovector-fonts`
 2. Grab submodules: `cd picovector-fonts` then `git submodule update --init`
-3. Run `pip install -r requirements.txt` (you may need a virtual env)
-4. 4. Run `./convert` to convert everything in `google-fonts/`
+3. Run `pip install -r requirements.txt` (you may need a virtual environment)
+4. Run `./convert` to convert everything in `google-fonts/`
 
 To add your own:
 
@@ -29,3 +29,9 @@ To add your own:
 Your PR should include the fonts and their license files.
 
 The contents of any `static` directories should be moved to the main font directory.
+
+## Troubleshooting
+
+- `error: externally-managed-environment` means you need to be installing your Python packages into a virtual environment. You can set one up with `python3 -m venv .venv` and activate it with `source .venv/bin/activate`.
+
+- If you get a `zip: command not found` error, you might need to `sudo apt install zip` and run `./convert` again.
