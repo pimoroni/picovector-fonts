@@ -1,4 +1,5 @@
 freetype-py==2.5.1
 numpy==2.2.3
 pillow==11.1.0
-simplification==0.7.13
+shapely==2.1.2
+simplification==0.7.14
